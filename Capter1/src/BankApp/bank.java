@@ -1,3 +1,5 @@
+package BankApp;
+
 class BankAccount {
     private double balance;
 
