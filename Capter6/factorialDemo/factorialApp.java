@@ -1,7 +1,7 @@
 package factorialDemo;
 
 import java.util.Scanner;
-
+//阶乘
 public class factorialApp {
     static int theAnswer;
     public static void main(String[] args) {
