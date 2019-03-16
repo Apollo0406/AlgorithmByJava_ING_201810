@@ -19,9 +19,12 @@ public class HashMap {
 
     /**
      * 添加/修改
+     * 参数：key,value
      */
     public void put(int key,int value){
+        //根据其key求得存储下标
         int index = hash(key);
+        //如果数组此位置为空，则新建一个Entry对象
         if(map[index] == null){
             map[index] = new Entry(-1,-1,null);
         }
@@ -56,6 +59,37 @@ public class HashMap {
     }
 
     /**
+     * 获取
+     */
+    public int get(int key){
+        int index = hash(key);
+        Entry e = map[index];
+        if(e != null && e.next != null){
+            for(e = e.next; e != null; e = e.next){
+                int k = e.key;
+                if(k == e.key){
+                    return e.value;
+                }
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 获取散列表中的个数
+     */
+    public int size(){
+        return size;
+    }
+
+    /**
+     * 测试是否扩容，获取散列表已经占用的个数
+     */
+    public int getLength(){
+        return map.length;
+    }
+
+    /**
      * hash()
      * 根据key来通过计算得到元素存储的位置
      * 计算方法：拿Key对数组长度取余
@@ -67,6 +101,8 @@ public class HashMap {
     /**
      * resize()
      * 扩容方法：创建一个大小为原数组2倍的新数组
+     * 整体思路：新创建一个大小为原数组2倍的数组，然后遍历旧数组，将不为null的Entry都访问过去，
+     * 对于每个Entry，则将e.next != null的都遍历过去，对遍历到的值进行重hash计算重新放到合适的位置
      */
     public void resize(){
         int newLength = map.length*2;
@@ -76,7 +112,7 @@ public class HashMap {
         for(int i = 0; i < oldMap.length; i++){
             if(oldMap[i] != null && oldMap[i].next != null){
                 Entry e = oldMap[i];
-                while (null != e.next){
+                while (e.next != null){
                     Entry next = e.next;
                     int index = hash(next.key);
                     if(map[index] == null){
