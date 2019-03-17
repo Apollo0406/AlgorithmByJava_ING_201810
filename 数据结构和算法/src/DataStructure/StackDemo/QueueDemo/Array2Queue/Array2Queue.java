@@ -9,11 +9,14 @@ public class Array2Queue {
 
     private int tail = 0;
 
+    private int capacity = 0;
+
     /**
      * 初始化队列
      */
     public Array2Queue(int capacity){
         this.objects = new Object[capacity];
+        this.capacity = capacity;
     }
 
     /**
@@ -69,9 +72,16 @@ public class Array2Queue {
 
     /**
      * 判满
+     * 当已有元素个数 + 1 = 容量 就算满
      */
     public boolean isFull(){
         return head == (tail+1)%objects.length;
     }
 
+    /**
+     * 得到总容量
+     */
+    public int getCapacity(){
+        return capacity;
+    }
 }
