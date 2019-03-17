@@ -1,4 +1,4 @@
-package DataStructure.StackDemo.QueueDemo.Array2Queue;
+package DataStructure.QueueDemo.Array2Queue;
 
 /**
  * 队列可存放元素个数 = 总容量 - 1

@@ -1,4 +1,4 @@
-package DataStructure.StackDemo.QueueDemo.Array2Queue;
+package DataStructure.QueueDemo.Array2Queue;
 
 //数组实现顺序队列
 public class Array2Queue {
